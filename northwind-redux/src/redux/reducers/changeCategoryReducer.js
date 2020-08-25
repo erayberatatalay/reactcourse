@@ -6,6 +6,6 @@ export default function changeCategoryReducer(state = initialState.currentCatego
         case actionTypes.CHANGE_CATEGORY:
             return action.payload
         default:
-            break;
+            return state;
     }
 }

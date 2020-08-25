@@ -1,1 +1,3 @@
-export default { currentCategory:}
+export default {
+    currentCategory: {}
+}
