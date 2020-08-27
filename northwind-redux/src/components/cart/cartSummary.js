@@ -7,6 +7,7 @@ import {
 import * as cartActions from '../../redux/actions/cartActions'
 import { bindActionCreators } from 'redux'
 import alertify from 'alertifyjs'
+import { Link } from 'react-router-dom'
 
 class cartSummary extends Component {
     removeFromCart(product) {
@@ -39,7 +40,7 @@ class cartSummary extends Component {
                     ))}
 
                     <DropdownItem divider />
-                    <DropdownItem>Go to cart</DropdownItem>
+                    <DropdownItem><Link to="/cart">Go to cart</Link></DropdownItem>
                 </DropdownMenu>
             </UncontrolledDropdown>
         )
