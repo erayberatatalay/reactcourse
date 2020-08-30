@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux'
 import { getCategories } from '../../redux/actions/categoryActions'
 import { saveProduct } from '../../redux/actions/productActions'
+import ProductDetail from "./ProductDetail";
+
 
 function AddOrUpdateProduct({
     products,
@@ -22,7 +24,7 @@ function AddOrUpdateProduct({
     function handleChange(event) {
         const { name, value } = event.target;
         setProduct(previousProduct => ({
-            ...previousproduct,
+            ...previousProduct,
             [name]: name === "categoryId" ? parseInt(value, 10) : value
         }))
     }
@@ -33,6 +35,15 @@ function AddOrUpdateProduct({
             history.push("/")
         });
     }
+
+    return (
+        <ProductDetail
+            product={product}
+            categories={categories}
+            onChange={handleChange}
+            onSave={handleSave}
+        />
+    )
 }
 
 export function getProductById(products, productId) {
@@ -42,13 +53,13 @@ export function getProductById(products, productId) {
 
 function mapStateToProps(state, ownProps) {
     const productId = ownProps.match.params.productId
-    const product = productId && state.productReducer.length > 0
-        ? getProductById(state.productReducer, productId)
+    const product = productId && state.productListReducer.length > 0
+        ? getProductById(state.productListReducer, productId)
         : {}
     return {
         product,
-        products: state.productReducer,
-        categories: state.categoryReducer
+        products: state.productListReducer,
+        categories: state.categoryListReducer
     }
 }
 
