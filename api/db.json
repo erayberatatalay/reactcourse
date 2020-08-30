@@ -607,6 +607,14 @@
       "quantityPerUnit": "12 boxes",
       "unitPrice": 13,
       "unitsInStock": 32
+    },
+    {
+      "productName": "AA",
+      "categoryId": 6,
+      "unitPrice": "25",
+      "quantityPerUnit": "22",
+      "unitsInStock": "2",
+      "id": 78
     }
   ],
   "categories": [

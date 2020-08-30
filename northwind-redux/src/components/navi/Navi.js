@@ -37,7 +37,7 @@ export default class Navi extends React.Component {
                         <Nav className="ml-auto" navbar>
                             <NavItem>
                                 <NavLink>
-
+                                    <Link to="/saveproduct">Ürün Ekle</Link>
                                 </NavLink>
                             </NavItem>
                             <CartSummary />

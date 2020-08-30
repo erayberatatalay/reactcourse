@@ -4,13 +4,12 @@ import { getCategories } from '../../redux/actions/categoryActions'
 import { saveProduct } from '../../redux/actions/productActions'
 import ProductDetail from "./ProductDetail";
 
-
 function AddOrUpdateProduct({
     products,
     categories,
     getProducts,
     getCategories,
-    savedProduct,
+    saveProduct,
     history,
     ...props
 }) {
@@ -31,8 +30,8 @@ function AddOrUpdateProduct({
 
     function handleSave(event) {
         event.preventDefault();
-        savedProduct(product).then(() => {
-            history.push("/")
+        saveProduct(product).then(() => {
+            history.push("/");
         });
     }
 

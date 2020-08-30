@@ -13,11 +13,13 @@ export function updateProductsSuccess(products) {
 }
 
 export function saveProductApi(product) {
-    return fetch("http://localhost:3000/products/" + (product.id || "", {
+    return fetch("http://localhost:3000/products/" + (product.id || ""), {
         method: product.id ? "PUT" : "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(product)
-    })).then(handleResponse).catch(handleError)
+    })
+        .then(handleResponse)
+        .catch(handleError)
 }
 
 export function saveProduct(product) {
