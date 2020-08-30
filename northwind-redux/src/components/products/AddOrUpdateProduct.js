@@ -14,18 +14,34 @@ function AddOrUpdateProduct({
     ...props
 }) {
     const [product, setProduct] = useState({ ...props.product });
+    const [errors, setErrors] = useState({});
     useEffect(() => {
         if (categories.length === 0) {
             getCategories();
         }
         setProduct({ ...props.product });
     }, [props.product]);
+
     function handleChange(event) {
         const { name, value } = event.target;
         setProduct(previousProduct => ({
             ...previousProduct,
             [name]: name === "categoryId" ? parseInt(value, 10) : value
         }))
+        validate(name, value);
+    }
+
+    function validate(name, value) {
+        if (name === "productName" && value === "") {
+            setErrors(previousErrors => ({
+                ...previousErrors, productName: "Ürün İsmi olmalıdır"
+            }))
+        }
+        else {
+            setErrors(previousErrors => ({
+                ...previousErrors, productName: ""
+            }))
+        }
     }
 
     function handleSave(event) {
@@ -41,6 +57,7 @@ function AddOrUpdateProduct({
             categories={categories}
             onChange={handleChange}
             onSave={handleSave}
+            errors={errors}
         />
     )
 }
